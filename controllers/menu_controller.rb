@@ -52,14 +52,66 @@ class MenuController
     end
 
       def view_all_entries
+        @address_book.entries.each do |entry|
+            system "clear"
+            puts entry.to_s
+            entry_submenu(entry)
+            end
+            
+        system "clear"
+        puts "End of Entries"
       end
 
       def create_entry
+
+        system "clear"
+        puts "New AddressBloc Entry"
+        print "Name "
+        name=gets.chomp
+        print "Phone number: "
+        phone = gets.chomp
+        print "Email: "
+        email = gets.chomp
+
+        @address_book.add_entry(name, phone, email)
+
+        system "clear"
+        puts "New entry created"
       end
+           
 
       def search_entries
       end
 
       def read_csv
+      end
+
+      def entry_submenu(entry)
+       puts "n - next entry"
+       puts "d - delete entry"
+       puts "e - edit this entry"
+       puts "m - return to main menu"
+
+       selection=gets.chomp
+
+       case selection 
+       when "n"
+
+       when "d"
+
+       when "e"
+
+       when "m"
+
+       system "clear"
+       
+       main_menu
+
+       else
+       system "clear"
+       puts "#{selection} is not a valid input"
+       entries_submenu(entry)
+       end
+
       end
   end
