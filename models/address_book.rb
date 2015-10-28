@@ -23,8 +23,8 @@ class AddressBook
 	@entries.insert(index, Entry.new(name, phone_number, email))
 	end
 
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
 	def remove_entry(name, phone_number, email)
 		delete_entry = nil
 
@@ -40,6 +40,6 @@ class AddressBook
 	end
 
 	
->>>>>>> refs/remotes/origin/checkpoint-20-menu
+#>>>>>>> refs/remotes/origin/checkpoint-20-menu
 
 end
