@@ -1,4 +1,5 @@
 require_relative '../models/address_book'
+require "csv"
 
 class MenuController
 	attr_accessor :address_book
@@ -84,6 +85,20 @@ class MenuController
       end
 
       def read_csv
+        
+        puts "What is the name of your CSV file? (Enter name with .csv expension) "
+
+        file_name=gets.chomp
+
+        @address_book.import_from_csv(file_name)
+
+        system "clear"
+
+        print "Your CSV has been imported!\n"
+
+
+
+
       end
 
       def entry_submenu(entry)
