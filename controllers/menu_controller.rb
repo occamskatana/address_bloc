@@ -1,5 +1,5 @@
 require_relative '../models/address_book'
-require "csv"
+
 
 class MenuController
 	attr_accessor :address_book
