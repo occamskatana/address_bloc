@@ -196,4 +196,20 @@ require_relative '../models/address_book'
        expect(entry).to be_nil
      end  
   end
+
+  describe "#iterative_search" do 
+      it "searches AddressBook for a non-existent entry" do
+        book.import_from_csv("entries.csv")
+        entry = book.binary_search("Dan")
+        expect(entry).to be_nil
+      end
+
+
+      it "searches AddressBook for Bill" do
+        book.import_from_csv("entries.csv")
+        entry = book.binary_search("Bill")
+        expect(entry).to be_a Entry 
+        check_entry(entry, "Bill", "555-555-4854", "bill@blocmail.com")
+    end
+  end
 end

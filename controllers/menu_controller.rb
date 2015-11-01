@@ -1,5 +1,6 @@
 require_relative '../models/address_book'
 require "csv"
+require 'benchmark'
 
 class MenuController
 	attr_accessor :address_book
@@ -42,9 +43,14 @@ class MenuController
              main_menu
         when 5
              puts "Good-bye!"
-             # #8
+             
              exit(0)
-        # #9
+        when 6
+            Benchmark.bm do |bm|
+              bm.report{binary_search}
+              bm.report{iterative_search}
+            end
+        
         else
              system
              puts "Sorry, that is not a valid input"
@@ -82,6 +88,16 @@ class MenuController
            
 
       def search_entries
+        puts "What name would you like to search for? "
+        name=gets.chomp
+
+            if name=@entries.binary_search(name)
+              puts "#{entry.name} has a phone number of #{entry.phone_number} and email of #{entry.email}"
+            else
+            puts "Your entry was not found"
+            end
+   
+
       end
 
       def read_csv
