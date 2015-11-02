@@ -77,7 +77,7 @@ class AddressBook
 
 		@entries.each do |entry_name|
 
-			if entry_name == name
+			if entry_name == @entries.name
 				return entry_name
 			else
 				return nil
