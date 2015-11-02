@@ -149,6 +149,24 @@ class MenuController
         
       end
 
+         def edit_entry(entry)
+ 
+           print "Updated name: "
+           name = gets.chomp
+           print "Updated phone number: "
+           phone_number = gets.chomp
+           print "Updated email: "
+           email = gets.chomp
+       
+           entry.name = name if !name.empty?
+           entry.phone_number = phone_number if !phone_number.empty?
+           entry.email = email if !email.empty?
+           system "clear"
+       
+           puts "Updated entry:"
+           puts entry
+        end
+
 
 
       def entry_submenu(entry)
