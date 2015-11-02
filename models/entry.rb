@@ -11,4 +11,6 @@ class Entry
 	def to_s
 		"Name: #{@name}\nPhone_number:#{@phone_number}\nEmail:#{@email}"
 	end
+
+	
 end

@@ -16,7 +16,8 @@ class MenuController
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - Delete ALL"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      selection=gets.to_i
@@ -41,12 +42,16 @@ class MenuController
              system
              read_csv
              main_menu
+        when 5 
+            system 
+            nuke_all
+            main_menu
 
-        when 5
+        when 6
              puts "Good-bye!"
              
              exit(0)
-        when 6
+        when 7
             Benchmark.bm do |bm|
               bm.report{binary_search}
               bm.report{iterative_search}
@@ -125,10 +130,25 @@ class MenuController
           end
       end
 
-      def delete_entry
+      def delete_entry(entry)
         @address_book.entries.delete(entry)
         puts "#{entry.name} has been deleted"
       end
+
+      def nuke_all
+
+        if address_book.entries.empty?
+          puts "There is nothing to delete"
+        end
+
+          address_book.entries = (address_book.entries - address_book.entries)
+
+          system "clear"
+
+          puts "Your address book has been nuked!"
+        
+      end
+
 
 
       def entry_submenu(entry)
